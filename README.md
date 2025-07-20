@@ -26,6 +26,12 @@ gem install kleya
 
 ### Basic Example
 
+The simplest way to capture a screenshot and save it can look like this,
+
+```ruby
+Kleya.capture('https://www.hellotext.com').save
+```
+
 ```ruby
 require 'kleya'
 
