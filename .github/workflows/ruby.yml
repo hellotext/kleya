@@ -14,6 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup environment
+        run: |
+          google-chrome --version
+          echo "CHROME_BIN=$(which google-chrome)" >> $GITHUB_ENV
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
