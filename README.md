@@ -38,7 +38,7 @@ artifact.save  # => "screenshot_20240112_143022.jpg"
 
 # Access the data
 puts artifact.base64    # Base64-encoded image data
-puts artifact.binay # Binary-eencoded image data
+puts artifact.binary # Binary-eencoded image data
 puts artifact.size      # File size in bytes
 puts artifact.content_type  # "image/jpeg"
 
@@ -63,7 +63,7 @@ Kleya includes convenient viewport presets for social media platforms and common
 
 ```ruby
 # Social media optimized screenshots
-browser = Kleya::Browser.new(present: :facebook)
+browser = Kleya::Browser.new(preset: :facebook)
 
 artifact = browser.capture('https://mysite.com/blog/post-1')
 artifact.save('social-media/')  # Saves as social-media/screenshot_20240112_143022.jpg
@@ -96,7 +96,7 @@ This wil quite the Ferrum connection and close it. When calling `capture` again 
 Kelay offers a top-level capture method as well which takes a screenshot and quits the browser connection after capturing.
 
 ```ruby
-Kleya.capture('https://wwww.hellotext.com')
+Kleya.capture('https://www.hellotext.com')
 ```
 
 ### Capture options
@@ -104,7 +104,7 @@ Kleya.capture('https://wwww.hellotext.com')
 Alongisde the options you pass for the instance, there's some extra configurable settings you can tweak to your usecase.
 
 - `format`: species the format of the image captures, i.e `jpeg` or `png`.
-- `enconding`: species the encoding of the image, possible options is `binary` or `base64` (defeault). Regardless, the `Kleya::Artifact` object responds to `#binary` and `base64` when needed.
+- `encoding`: species the encoding of the image, possible options is `binary` or `base64` (defeault). Regardless, the `Kleya::Artifact` object responds to `#binary` and `base64` when needed.
 - `quality`: an integer between 1 - 100 that determines the quality of the final image, higher quality images result in bigger sizes and may not work correctly in some situations such as the Open Graph protocl, you can tweak and test this. Defaults to `90`.
 
 ```ruby
