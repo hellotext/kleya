@@ -46,61 +46,74 @@ puts artifact.content_type  # "image/jpeg"
 browser.quit
 ```
 
-### Using Presets
+### Presets
 
-Kleya includes convenient viewport presets for social media platforms and common devices:
+Kleya includes convenient viewport presets for social media platforms and common devices. You can pass any of the following values when initializing a browser instance.
+
+- `desktop`: default
+
+- `twitter`
+- `facebook`
+- `instagram`
+
+- `laptop`
+- `tablet`
+- `mobile`
 
 ```ruby
 # Social media optimized screenshots
-browser = Kleya::Browser.new(
-  width: Kleya::Preset::TWITTER.width,
-  height: Kleya::Preset::TWITTER.height
-)
+browser = Kleya::Browser.new(present: :facebook)
+
 artifact = browser.capture('https://mysite.com/blog/post-1')
 artifact.save('social-media/')  # Saves as social-media/screenshot_20240112_143022.jpg
-
-# Available social media presets:
-# - TWITTER (1200x675)
-# - FACEBOOK (1200x630)
-# - LINKEDIN (1200x627)
-# - INSTAGRAM (1080x1080)
-
-# Device presets:
-# - DESKTOP (1920x1080)
-# - LAPTOP (1366x768)
-# - TABLET (768x1024)
-# - MOBILE (375x667)
 ```
 
 ### Custom Viewport Sizes
 
-```ruby
-# Custom dimensions
-browser = Kleya::Browser.new(width: 1600, height: 900)
+If none of the builtin presets work for your taste, simply pass `width` and `height` of the dimensions of the browser tab.
 
-# Using a custom viewport object
-viewport = Kleya::Viewport.new(width: 800, height: 600)
-browser = Kleya::Browser.new(width: viewport.width, height: viewport.height)
+```ruby
+browser = Kleya::Browser.new(width: 1600, height: 900)
 ```
 
-### Screenshot Options
+### Browser
+
+Kleya is built on-top of [Ferrum](https://github.com/rubycdp/ferrum) and thus, accepts all the [Customization options supported by Ferrum](https://github.com/rubycdp/ferrum?tab=readme-ov-file#customization).
 
 ```ruby
 browser = Kleya::Browser.new
-
-# PNG format with binary encoding
-artifact = browser.capture('https://example.com',
-  format: :png,
-  encoding: :binary
-)
-
-# JPEG with custom quality
-artifact = browser.capture('https://example.com',
-  format: :jpeg,
-  quality: 85,  # 1-100, default is 90
-  encoding: :base64
-)
 ```
+
+A Kleya instance uses a single persistent Ferrum connection underneath. This means a less resource-intensive script when running a batch of screenshots in the same session, once you're ready to quit the active browser session. You can do the following.
+
+```ruby
+browser.quit
+```
+
+This wil quite the Ferrum connection and close it. When calling `capture` again on the same instance, a new Ferrum connection is established and kept alive until explicitly quit.
+
+Kelay offers a top-level capture method as well which takes a screenshot and quits the browser connection after capturing.
+
+```ruby
+Kleya.capture('https://wwww.hellotext.com')
+```
+
+### Capture options
+
+Alongisde the options you pass for the instance, there's some extra configurable settings you can tweak to your usecase.
+
+- `format`: species the format of the image captures, i.e `jpeg` or `png`.
+- `enconding`: species the encoding of the image, possible options is `binary` or `base64` (defeault). Regardless, the `Kleya::Artifact` object responds to `#binary` and `base64` when needed.
+- `quality`: an integer between 1 - 100 that determines the quality of the final image, higher quality images result in bigger sizes and may not work correctly in some situations such as the Open Graph protocl, you can tweak and test this. Defaults to `90`.
+
+```ruby
+artifact = browser.capture('https://example.com', format: :jpeg, quality: 85, encoding: :base64)
+
+artifact.binary # The binary-encoded image
+artifact.base64 # The base-64 representation of the image.
+```
+
+Learn more about Artifacts in the next section.
 
 ### Working with Artifacts
 
@@ -126,7 +139,7 @@ artifact.content_type                               # => "image/jpeg"
 artifact.dimensions                                 # => { width: 1920, height: 1080 }
 ```
 
-### Advanced Configuration
+###
 
 ```ruby
 # Configure browser behavior

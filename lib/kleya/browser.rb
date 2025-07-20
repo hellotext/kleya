@@ -62,8 +62,13 @@ module Kleya
           browser_options: { 'no-sandbox': nil },
           window_size: @viewport.to_a,
           timeout: @options[:timeout] || 60,
-          process_timeout: @options[:process_timeout] || 60
+          process_timeout: @options[:process_timeout] || 60,
+          **ferrum_options
         )
+      end
+
+      def ferrum_options
+        @options.reject { %i[width height headless timeout process_timeout] }
       end
   end
 end
