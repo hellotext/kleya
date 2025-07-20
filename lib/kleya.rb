@@ -2,6 +2,7 @@ require 'ferrum'
 
 require_relative 'kleya/errors'
 require_relative 'kleya/preset'
+require_relative 'kleya/viewport'
 require_relative 'kleya/artifact'
 require_relative 'kleya/browser'
 

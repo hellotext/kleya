@@ -1,3 +1,5 @@
+require 'base64'
+
 module Kleya
   class Artifact
     # @param data [String] the screenshot data (base64 or binary)
@@ -31,9 +33,15 @@ module Kleya
     end
 
     # @param path [String] the path to save the artifact
-    # @return [void] saves the artifact to the given path
-    def save(path)
-      File.write(path, binary, mode: 'wb')
+    # @return [String] the full path where the file was saved
+    def save(path = nil)
+      if path.nil?
+        path = filename
+      elsif File.directory?(path)
+        path = File.join(path, filename)
+      end
+
+      File.write(path, binary, mode: 'wb').then { path }
     end
 
     # @return [String] the base64-encoded data of the artifact
