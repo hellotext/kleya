@@ -50,16 +50,16 @@ browser.quit
 
 Kleya includes convenient viewport presets for social media platforms and common devices. You can pass any of the following values when initializing a browser instance.
 
-- `desktop`: default
+- `desktop`: default (1920x1080)
 
-- `x`
-- `facebook`
-- `instagram`
-- `linkedin`
+- `x` (1200x675)
+- `facebook` (1200x630)
+- `instagram` (1080x1080)
+- `linkedin` (1200x627)
 
-- `laptop`
-- `tablet`
-- `mobile`
+- `laptop` (1366x768)
+- `tablet` (768x1024)
+- `mobile` (375x667)
 
 ```ruby
 # Social media optimized screenshots
