@@ -1,0 +1,6 @@
+lib/kleya.rb ff87f70391553691fd1c816d594a958157bfb3ee
+lib/kleya/errors.rb 70d780ebeea79f5bced585b1ab92df0e912d5bf8
+lib/kleya/preset.rb 354c36e5e475bf1c85ea53949e01d2c7889f1568
+lib/kleya/browser.rb bda0a17e6fc7931d00f6ad38d394006ed40a1e21
+lib/kleya/artifact.rb b33a56d8fb641f954eb33e7098495c61df10848a
+lib/kleya/viewport.rb 8e8e91236211d0b74fa051deb502a98b74a14174
