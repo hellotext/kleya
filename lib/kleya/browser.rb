@@ -65,7 +65,7 @@ module Kleya
       def browser
         @browser ||= Ferrum::Browser.new(
           headless: @options.fetch(:headless, true),
-          browser_options: { 'no-sandbox': nil },
+          browser_options: { 'no-sandbox': nil }.merge(**@options[:browser_options]),
           window_size: @viewport.to_a,
           timeout: @options[:timeout] || 60,
           process_timeout: @options[:process_timeout] || 60,
@@ -74,7 +74,7 @@ module Kleya
       end
 
       def ferrum_options
-        @options.reject { %i[width height headless timeout process_timeout] }
+        @options.reject { |key, _| %i[width height headless timeout process_timeout].include?(key) }
       end
   end
 end
