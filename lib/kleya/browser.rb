@@ -12,6 +12,12 @@ module Kleya
           width: options[:width] || Preset::DESKTOP.width,
           height: options[:height] || Preset::DESKTOP.height
         )
+      elsif options[:preset]
+        if Preset.const_defined?(options[:preset].to_s.upcase)
+          @viewport = Preset.const_get(options[:preset].to_s.upcase)
+        else
+          raise ArgumentError, "Preset #{options[:preset]} not found"
+        end
       else
         @viewport = Preset::DESKTOP
       end
@@ -25,10 +31,10 @@ module Kleya
     # @option options [Integer] :quality (90) JPEG quality (1-100)
     # @option options [Symbol] :encoding (:base64) output encoding
     # @return [Artifact] the screenshot artifact
-    # @example Taking a Twitter-optimized screenshot
+    # @example Taking a X-optimized screenshot
     #   browser = Kleya::Browser.new(
-    #     width: Kleya::Preset::TWITTER.width,
-    #     height: Kleya::Preset::TWITTER.height
+    #     width: Kleya::Preset::X.width,
+    #     height: Kleya::Preset::X.height
     #   )
     #   screenshot = browser.capture('https://example.com')
     def capture(url, options = {})

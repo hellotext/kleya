@@ -2,10 +2,10 @@ require_relative 'viewport'
 
 module Kleya
   # Social media platform viewport dimensions
-  # @example Using Twitter preset
-  #   Kleya::Preset::TWITTER # => #<Viewport @width=1200 @height=675>
+  # @example Using X preset
+  #   Kleya::Preset::X # => #<Viewport @width=1200 @height=675>
   module Preset
-    TWITTER = Viewport.new(width: 1200, height: 675)
+    X = Viewport.new(width: 1200, height: 675)
     FACEBOOK = Viewport.new(width: 1200, height: 630)
     LINKEDIN = Viewport.new(width: 1200, height: 627)
     INSTAGRAM = Viewport.new(width: 1080, height: 1080)

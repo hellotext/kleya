@@ -52,9 +52,10 @@ Kleya includes convenient viewport presets for social media platforms and common
 
 - `desktop`: default
 
-- `twitter`
+- `x`
 - `facebook`
 - `instagram`
+- `linkedin`
 
 - `laptop`
 - `tablet`
