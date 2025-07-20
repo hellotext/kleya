@@ -18,8 +18,8 @@ module Kleya
   # @option options [Integer] :quality (90) JPEG quality (1-100)
   # @option options [Symbol] :encoding (:binary) output encoding
   # @return [String] binary image data
-  # @example Taking a Twitter-optimized screenshot
-  #   Kleya.capture('https://example.com', viewport: :twitter)
+  # @example Taking a X-optimized screenshot
+  #   Kleya.capture('https://example.com', viewport: :x)
   def self.capture(url, **options)
     browser = Browser.new(**options)
     browser.capture(url, **options)
