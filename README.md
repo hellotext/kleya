@@ -22,15 +22,15 @@ Or install it yourself as:
 gem install kleya
 ```
 
-## Usage
-
-### Basic Example
+## Basic Example
 
 The simplest way to capture a screenshot and save it can look like this,
 
 ```ruby
 Kleya.capture('https://www.hellotext.com').save
 ```
+
+## Usage
 
 ```ruby
 require 'kleya'
