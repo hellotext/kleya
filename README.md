@@ -44,7 +44,7 @@ artifact.save  # => "screenshot_20240112_143022.jpg"
 
 # Access the data
 puts artifact.base64    # Base64-encoded image data
-puts artifact.binary # Binary-eencoded image data
+puts artifact.binary # Binary-encoded image data
 puts artifact.size      # File size in bytes
 puts artifact.content_type  # "image/jpeg"
 
@@ -97,9 +97,9 @@ A Kleya instance uses a single persistent Ferrum connection underneath. This mea
 browser.quit
 ```
 
-This wil quite the Ferrum connection and close it. When calling `capture` again on the same instance, a new Ferrum connection is established and kept alive until explicitly quit.
+This wil quit the Ferrum connection and close it. When calling `capture` again on the same instance, a new Ferrum connection is established and kept alive until explicitly quit.
 
-Kelay offers a top-level capture method as well which takes a screenshot and quits the browser connection after capturing.
+Kleya offers a top-level capture method as well which takes a screenshot and quits the browser connection after capturing.
 
 ```ruby
 Kleya.capture('https://www.hellotext.com')
@@ -107,10 +107,10 @@ Kleya.capture('https://www.hellotext.com')
 
 ### Capture options
 
-Alongisde the options you pass for the instance, there's some extra configurable settings you can tweak to your usecase.
+Alongside the options you pass for the instance, there's some extra configurable settings you can tweak to your usecase.
 
-- `format`: species the format of the image captures, i.e `jpeg` or `png`.
-- `encoding`: species the encoding of the image, possible options is `binary` or `base64` (defeault). Regardless, the `Kleya::Artifact` object responds to `#binary` and `base64` when needed.
+- `format`: specifies the format of the image captures, i.e `jpeg` or `png`.
+- `encoding`: specifies the encoding of the image, possible options is `binary` or `base64` (default). Regardless, the `Kleya::Artifact` object responds to `#binary` and `base64` when needed.
 - `quality`: an integer between 1 - 100 that determines the quality of the final image, higher quality images result in bigger sizes and may not work correctly in some situations such as the Open Graph (OG) protocol, you can tweak and test this. Defaults to `90`.
 
 ```ruby
