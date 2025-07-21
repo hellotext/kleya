@@ -180,23 +180,17 @@ end
 
 ## Roadmap
 
-### v0.2.0 - Enhanced Capture Control
+- Wait strategies (`wait_for: '.element'`, `wait_until: :network_idle`)
+- Full page screenshots (not just viewport)
+- Built-in retry mechanism with configurable delays
 
-- [ ] Wait strategies (`wait_for: '.element'`, `wait_until: :network_idle`)
-- [ ] Full page screenshots (not just viewport)
-- [ ] Built-in retry mechanism with configurable delays
+- Memory usage optimization for large batches
+- Request blocking (ads, analytics, fonts)
+- Custom user agents for mobile rendering
 
-### v0.3.0 - Performance & Reliability
-
-- [ ] Memory usage optimization for large batches
-- [ ] Request blocking (ads, analytics, fonts)
-- [ ] Custom user agents for mobile rendering
-
-### v0.4.0 - Developer Experience
-
-- [ ] CLI tool for quick captures (`kleya capture https://example.com`)
-- [ ] Debug mode with browser preview
-- [ ] Capture metrics (timing, size, errors)
+- CLI tool for quick captures (`kleya capture https://example.com`)
+- Debug mode with browser preview
+- Capture metrics (timing, size, errors)
 
 ### Future Considerations
 
