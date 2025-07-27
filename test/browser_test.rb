@@ -61,7 +61,7 @@ class BrowserTest < Minitest::Test
       @mock_ferrum.expect :goto, nil, ['https://example.com']
       # The screenshot method receives keyword arguments as a hash
       @mock_ferrum.expect :screenshot, 'fake_image_data' do |args|
-        args == { format: :jpeg, quality: 90, encoding: :base64 }
+        args == { format: :jpeg, quality: 90, encoding: :base64, full: false }
       end
 
       artifact = browser.capture('https://example.com')
@@ -84,7 +84,7 @@ class BrowserTest < Minitest::Test
       @mock_ferrum.expect :goto, nil, ['https://example.com']
       # The screenshot method receives keyword arguments as a hash
       @mock_ferrum.expect :screenshot, 'fake_png_data' do |args|
-        args == { format: :png, quality: 100, encoding: :binary }
+        args == { format: :png, quality: 100, encoding: :binary, full: false }
       end
 
       artifact = browser.capture('https://example.com',
@@ -96,6 +96,25 @@ class BrowserTest < Minitest::Test
       assert_equal(:png, artifact.instance_variable_get(:@format))
       assert_equal(100, artifact.instance_variable_get(:@quality))
       assert_equal(:binary, artifact.instance_variable_get(:@encoding))
+    end
+
+    @mock_ferrum.verify
+  end
+  
+  def test_capture_with_full_area
+    browser = Kleya::Browser.new
+
+    Ferrum::Browser.stub :new, @mock_ferrum do
+      @mock_ferrum.expect :goto, nil, ['https://example.com']
+      # The screenshot method receives keyword arguments as a hash
+      @mock_ferrum.expect :screenshot, 'fake_full_image_data' do |args|
+        args == { format: :jpeg, quality: 90, encoding: :base64, full: true }
+      end
+
+      artifact = browser.capture('https://example.com', area: :full)
+
+      assert_instance_of Kleya::Artifact, artifact
+      assert_equal('fake_full_image_data', artifact.instance_variable_get(:@data))
     end
 
     @mock_ferrum.verify

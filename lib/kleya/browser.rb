@@ -30,6 +30,7 @@ module Kleya
     # @option options [Symbol] :format (:jpeg) image format (:jpeg, :png)
     # @option options [Integer] :quality (90) JPEG quality (1-100)
     # @option options [Symbol] :encoding (:base64) output encoding
+    # @option options [Symbol] :area (:viewport) the area to capture (:viewport, :full)
     # @return [Artifact] the screenshot artifact
     # @example Taking a X-optimized screenshot
     #   browser = Kleya::Browser.new(
@@ -43,12 +44,9 @@ module Kleya
       format = options[:format] || :jpeg
       quality = options[:quality] || 90
       encoding = options[:encoding] || :base64
+      full = options[:area] == :full
 
-      data = browser.screenshot(
-        format: format,
-        quality: quality,
-        encoding: encoding
-      )
+      data = browser.screenshot(format:, quality:, encoding:, full:)
 
       Artifact.new(data:, url:, viewport: @viewport, format:, quality:, encoding:)
     rescue Ferrum::TimeoutError
