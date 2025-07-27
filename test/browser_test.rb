@@ -111,7 +111,7 @@ class BrowserTest < Minitest::Test
         args == { format: :jpeg, quality: 90, encoding: :base64, full: true }
       end
 
-      artifact = browser.capture('https://example.com', area: :full)
+      artifact = browser.capture('https://example.com', area: :page)
 
       assert_instance_of Kleya::Artifact, artifact
       assert_equal('fake_full_image_data', artifact.instance_variable_get(:@data))

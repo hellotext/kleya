@@ -30,7 +30,7 @@ module Kleya
     # @option options [Symbol] :format (:jpeg) image format (:jpeg, :png)
     # @option options [Integer] :quality (90) JPEG quality (1-100)
     # @option options [Symbol] :encoding (:base64) output encoding
-    # @option options [Symbol] :area (:viewport) the area to capture (:viewport, :full)
+    # @option options [Symbol] :area (:viewport) the area to capture (:viewport, :page)
     # @return [Artifact] the screenshot artifact
     # @example Taking a X-optimized screenshot
     #   browser = Kleya::Browser.new(
@@ -44,7 +44,7 @@ module Kleya
       format = options[:format] || :jpeg
       quality = options[:quality] || 90
       encoding = options[:encoding] || :base64
-      full = options[:area] == :full
+      full = options[:area] == :page
 
       data = browser.screenshot(format:, quality:, encoding:, full:)
 
