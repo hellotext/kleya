@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'kleya'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.summary = 'Screenshots, made easy.'
   s.description = 'Screenshots, made easy.'
   s.authors = ['Hellotext', 'Ahmed Khattab']
