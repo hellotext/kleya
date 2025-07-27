@@ -56,7 +56,7 @@ browser.quit
 
 Kleya includes convenient viewport presets for social media platforms and common devices. You can pass any of the following values when initializing a browser instance.
 
-- `desktop`: default (1920x1080)
+- `desktop` default (1920x1080)
 
 - `x` (1200x675)
 - `facebook` (1200x630)
@@ -186,7 +186,6 @@ end
 
 - Memory usage optimization for large batches
 - Request blocking (ads, analytics, fonts)
-- Custom user agents for mobile rendering
 
 - CLI tool for quick captures (`kleya capture https://example.com`)
 - Debug mode with browser preview
