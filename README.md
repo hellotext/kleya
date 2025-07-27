@@ -109,9 +109,10 @@ Kleya.capture('https://www.hellotext.com')
 
 Alongside the options you pass for the instance, there's some extra configurable settings you can tweak to your usecase.
 
-- `format`: specifies the format of the image captures, i.e `jpeg` or `png`.
-- `encoding`: specifies the encoding of the image, possible options is `binary` or `base64` (default). Regardless, the `Kleya::Artifact` object responds to `#binary` and `base64` when needed.
-- `quality`: an integer between 1 - 100 that determines the quality of the final image, higher quality images result in bigger sizes and may not work correctly in some situations such as the Open Graph (OG) protocol, you can tweak and test this. Defaults to `90`.
+- `format` specifies the format of the image captures, i.e `jpeg` or `png`.
+- `encoding` specifies the encoding of the image, possible options is `binary` or `base64` (default). Regardless, the `Kleya::Artifact` object responds to `#binary` and `base64` when needed.
+- `quality` an integer between 1 - 100 that determines the quality of the final image, higher quality images result in bigger sizes and may not work correctly in some situations such as the Open Graph (OG) protocol, you can tweak and test this. Defaults to `90`.
+- `area` specifies the area of the browser to capture, defaults to `viewport` for capturing only the visible part of the page. Supported values are `viewport` and `page` for full-page screenshots.
 
 ```ruby
 artifact = browser.capture('https://example.com', format: :jpeg, quality: 85, encoding: :base64)
