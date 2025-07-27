@@ -182,7 +182,6 @@ end
 ## Roadmap
 
 - Wait strategies (`wait_for: '.element'`, `wait_until: :network_idle`)
-- Full page screenshots (not just viewport)
 - Built-in retry mechanism with configurable delays
 
 - Memory usage optimization for large batches
