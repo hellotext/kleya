@@ -11,6 +11,11 @@ class ArtifactTest < Minitest::Test
     )
   end
 
+  def teardown
+    FileUtils.rm_f('test.jpg')
+    FileUtils.rm_f('appends_extension.jpeg')
+  end
+
   def test_artifact_size
     assert_equal(4, @artifact.size)
   end
@@ -19,6 +24,16 @@ class ArtifactTest < Minitest::Test
     assert_runs_without_errors do
       @artifact.save('test.jpg')
     end
+
+    assert File.exist?('test.jpg')
+  end
+
+  def test_artifact_save_with_content_type_extension
+    assert_runs_without_errors do
+      @artifact.save('appends_extension')
+    end
+
+    assert File.exist?('appends_extension.jpeg')
   end
 
   def test_artifact_base64

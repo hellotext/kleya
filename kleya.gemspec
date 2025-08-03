@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'kleya'
-  s.version = '0.0.2'
+  s.version = '0.0.3'
   s.summary = 'Screenshots, made easy.'
   s.description = 'Screenshots, made easy.'
   s.authors = ['Hellotext', 'Ahmed Khattab']
@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'webmock', '~> 3.25'
 
   s.add_dependency 'ferrum', '~> 0.17'
+  s.executables << 'kleya'
 end
