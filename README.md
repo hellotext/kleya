@@ -30,6 +30,12 @@ The simplest way to capture a screenshot and save it can look like this,
 Kleya.capture('https://www.hellotext.com').save
 ```
 
+Or directly via the CLI
+
+```bash
+kleya https://www.hellotext.com
+```
+
 ## Usage
 
 ```ruby
@@ -51,6 +57,27 @@ puts artifact.content_type  # "image/jpeg"
 # Clean up
 browser.quit
 ```
+
+## CLI Usage
+
+Kleya includes a command-line interface for quick screenshot captures:
+
+```bash
+# Basic usage
+kleya https://www.hellotext.com
+
+# With options
+kleya https://www.hellotext.com --format png --quality 95 --area page
+```
+
+CLI Options
+
+- `--format`, `-f` - Image format (jpeg, png). Default: jpeg
+- `--quality`, `-q` - Image quality (1-100). Default: 90
+- `--area`, `-a` - Capture area (viewport, page). Default: viewport
+- `--encoding`, `-e` - Output encoding (binary, base64). Default: base64
+- `--output`, `-o` - Output destination, defaults to the current directory.
+- `--help`, `-h` - Show help message
 
 ### Presets
 
@@ -187,7 +214,6 @@ end
 - Memory usage optimization for large batches
 - Request blocking (ads, analytics, fonts)
 
-- CLI tool for quick captures (`kleya capture https://example.com`)
 - Debug mode with browser preview
 - Capture metrics (timing, size, errors)
 
