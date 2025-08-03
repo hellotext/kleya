@@ -39,6 +39,8 @@ module Kleya
         path = filename
       elsif File.directory?(path)
         path = File.join(path, filename)
+      elsif File.extname(path).empty?
+        path = "#{path}.#{@format}"
       end
 
       File.write(path, binary, mode: 'wb').then { path }

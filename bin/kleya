@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'kleya'
+
+options = {
+  format: :jpeg,
+  quality: 90,
+  area: :viewport,
+  encoding: :base64,
+  output: nil
+}
+
+parser = OptionParser.new do |opts|
+  opts.banner = 'Usage: kleya [url] [options]'
+
+  opts.on('-f', '--format FORMAT', [:jpeg, :png], 'Image format (jpeg, png)') do |format|
+    options[:format] = format
+  end
+
+  opts.on('-q', '--quality QUALITY', Integer, 'Image quality (0-100)') do |quality|
+    options[:quality] = quality
+  end
+
+  opts.on('-a', '--area AREA', [:viewport, :full], 'Area to capture (viewport, full)') do |area|
+    options[:area] = area
+  end
+
+  opts.on('-e', '--encoding ENCODING', [:base64, :binary], 'Encoding (base64, binary)') do |encoding|
+    options[:encoding] = encoding
+  end
+
+  opts.on('-o', '--output OUTPUT', String, 'Output file path') do |output|
+    options[:output] = output
+  end
+
+  opts.on('-h', '--help', 'Show this message') do
+    puts opts
+    exit
+  end
+end
+
+parser.parse!
+
+if ARGV.empty?
+  puts "Error: URL is required"
+  puts parser
+  exit 1
+end
+
+Kleya.capture(ARGV[0], **options).save(options[:output])
