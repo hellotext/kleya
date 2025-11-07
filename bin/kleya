@@ -22,7 +22,7 @@ parser = OptionParser.new do |opts|
     options[:quality] = quality
   end
 
-  opts.on('-a', '--area AREA', [:viewport, :full], 'Area to capture (viewport, full)') do |area|
+  opts.on('-a', '--area AREA', [:viewport, :page], 'Area to capture (viewport, page)') do |area|
     options[:area] = area
   end
 
