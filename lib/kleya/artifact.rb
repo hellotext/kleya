@@ -35,6 +35,8 @@ module Kleya
     # @param path [String] the path to save the artifact
     # @return [String] the full path where the file was saved
     def save(path = nil)
+      raise ArgumentError, 'path cannot contain parent directory traversal' if path.to_s.split(/[\\\/]/).include?('..')
+
       if path.nil?
         path = filename
       elsif File.directory?(path)

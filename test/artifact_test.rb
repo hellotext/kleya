@@ -36,6 +36,12 @@ class ArtifactTest < Minitest::Test
     assert File.exist?('appends_extension.jpeg')
   end
 
+  def test_artifact_save_rejects_parent_directory_traversal
+    error = assert_raises(ArgumentError) { @artifact.save('../escaped') }
+
+    assert_equal('path cannot contain parent directory traversal', error.message)
+  end
+
   def test_artifact_base64
     assert_equal(Base64.encode64('test'), @artifact.base64)
   end
